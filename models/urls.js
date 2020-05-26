@@ -7,7 +7,7 @@ const urlSchema = mongoose.Schema({
   },
   shorten: {
     type: String,
-    require: type
+    require: true
   }
 })
 

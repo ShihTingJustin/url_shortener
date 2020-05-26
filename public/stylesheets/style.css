@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  padding: 100px;
+}
+
+.card {
+  /* color: #ffffff; */
+}
+
+.input-area {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  background: transparent;
+  border-radius: 0;
+  letter-spacing: 0.5px;
+  margin: 1.2rem 0;
+}
+
+.input-area:focus {
+  box-shadow: none;
+  outline: none;
+  border-color: #ff626f;
+  background: transparent;
+}
+
+.fa-info-circle, .fa-pencil-alt, .fa-times-circle {
+  color: #6C757D;
+  background: transparent;
+}
+
+.fa-info-circle:hover, .fa-pencil-alt:hover, .fa-times-circle:hover {
+  color: #dc3543;
+}
