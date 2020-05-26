@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   const { url } = req.body
   console.log(url)
+  // check url available
   const urlCheckPromise = function () {
     return new Promise((resolve, reject) => {
       request({ url: url, method: 'HEAD' }, (err, res) => {
@@ -36,10 +37,10 @@ app.post('/', (req, res) => {
       });
     })
   }
-
+  // create and render page by result
   urlCheckPromise()
     .then(function (value) {
-      if (value) {        
+      if (value) {
         const shorten = shortener()  // 產生五碼英數組合
         return URL.create({ origin: url, shorten })
           .then(() => res.render('valid', { shorten }))
@@ -48,6 +49,17 @@ app.post('/', (req, res) => {
         res.render('invalid', { url })
       }
     })
+})
+// redirect to origin url
+app.get('/:shorten', (req, res) => {
+  const { shorten } = req.params
+  URL.find({ shorten: shorten })
+    .lean()
+    .then(url => {
+      console.log(58, shorten, url[0].origin)
+      res.redirect(`${url[0].origin}`)
+    })
+    .catch(error => console.log(error))
 })
 
 
