@@ -27,28 +27,67 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   const { url } = req.body
   console.log(url)
+
   // check url available
-  const urlCheckPromise = function () {
-    return new Promise((resolve, reject) => {
+  const urlCheck = function () {
+    return new Promise((resolve, rej) => {
       request({ url: url, method: 'HEAD' }, (err, res) => {
         const result = (!err && res.statusCode === 200) == true ? true : false
         //console.log(37, result)
         resolve(result)
-      });
+      })
     })
   }
+
   // create and render page by result
-  urlCheckPromise()
-    .then(function (value) {
-      if (value) {
-        const shorten = shortener()  // 產生五碼英數組合
-        return URL.create({ origin: url, shorten })
-          .then(() => res.render('valid', { shorten }))
-          .catch(error => console.log(error))
+  const generateShortURL = function (urlCheck, url) {
+    return new Promise((resolve, rej) => {
+      if (urlCheck) {
+        let shortURL = shortener()
+        resolve(shortURL)
       } else {
         res.render('invalid', { url })
       }
     })
+  }
+
+  const checkShortUrlRepeat = function (shortURL) {
+    return new Promise((res, rej) => {
+      URL.find({ shorten: shortURL })
+        .then(url => {
+          let newShortURL = shortURL
+          if (url.length === 0) {
+            console.log(`'${newShortURL}' is not repeat`)
+            res(newShortURL)
+          } else if (url.length > 0) {
+            console.log('repeat! creating new ...')
+            newShortURL = shortener()
+            checkShortUrlRepeat(newShortURL)
+          }
+        })
+        .catch(error => console.log(error))
+    })
+  }
+
+  // create data
+  const createData = function (checkShortUrlRepeat) {
+    return new Promise((resolve, rej) => {
+
+      URL.create({ origin: url, shorten: checkShortUrlRepeat })
+        .then(() => res.render('valid', { checkShortUrlRepeat }))
+        .catch(error => console.log(error))
+    })
+  }
+
+  async function shortenAsyncAwait() {
+    const value = await urlCheck()
+    const value1 = await generateShortURL(value, url)
+    const value2 = await checkShortUrlRepeat(value1)
+    const value3 = await generateShortURL(value2)
+    const value4 = await createData(value3)
+  }
+
+  shortenAsyncAwait()
 })
 // redirect to origin url
 app.get('/:shorten', (req, res) => {
