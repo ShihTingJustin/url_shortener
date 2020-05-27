@@ -1,14 +1,16 @@
-<div class="container h-100">
-  <div style="outline: auto;" class="card bg-dark h-100 d-flex flex-column justify-content-center align-items-center">
-    <h2>URL SHORTENER<i class="fas fa-link fa-lg ml-2"></i></h2>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+  <div class="card bg-dark d-flex flex-column justify-content-center align-items-center">
+    <div class="logo">
+      URL SHORTENER<i class="fas fa-link fa-lg ml-2"></i>
+    </div>
     <form action="/" method="POST" class="w-100 d-flex flex-column align-items-center">
       <div style="height: 50px;" class="input-area w-75">
-        <input required type="text" name="url" placeholder="Please enter url here" class="input-area w-100"
+        <input required type="text" name="url" placeholder="Please enter URL here" class="input-area w-100 text-center"
           value="{{#unless urlCheck}}{{ url }}{{/unless}}">
         {{#unless urlCheck}}<small class="input-small" style="color: #ff626f;">Sorry, this link is invalid.</small>
         {{/unless}}
       </div>
-      <button type="submit" class="submit-btn btn btn w-50">Shorten</button>
+      <button type="submit" class="submit-btn btn w-50">Shorten</button>
     </form>
   </div>
 </div>

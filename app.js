@@ -69,11 +69,11 @@ app.post('/', (req, res) => {
   }
 
   // create data
-  const createData = function (checkShortUrlRepeat) {
+  const createData = function (checkedShortURL) {
     return new Promise((resolve, rej) => {
-      console.log(74, checkShortUrlRepeat)
-      URL.create({ origin: url, shorten: checkShortUrlRepeat })
-        .then(() => res.render('valid', { checkShortUrlRepeat }))
+      console.log(74, checkedShortURL)
+      URL.create({ origin: url, shorten: checkedShortURL })
+        .then(() => res.render('valid', { url, checkedShortURL }))
         .catch(error => console.log(error))
     })
   }

@@ -1,6 +1,4 @@
-html, body, main {
-  height: 100%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;900&display=swap');
 
 * {
   box-sizing: border-box;
@@ -11,10 +9,25 @@ html, body, main {
   margin: 0;
 }
 
-.container {
-  padding: 100px;
+html, body, .container {
+  height: 100%;
+  width: 100%;
 }
 
+.body {
+  background-color: #6c757d;
+}
+
+.card {
+  width: 100%;
+  border: 10px solid #ececec;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-family: 'Noto Serif TC', serif;
+  margin-bottom: 6rem;
+}
 
 /* input-area:-webkit-autofill {
     background-color: black
@@ -25,10 +38,6 @@ html, body, main {
 
 .card, .input-area, .card button {
   color: #ececec;
-}
-
-.card h2 {
-  margin: 0.5rem 0 3rem 0;
 }
 
 .submit-btn {
@@ -57,13 +66,52 @@ input:focus {
   transition-duration: 1s;
 }
 
+.url-block {
+  background-color: #636060;
+  backdrop-filter: blur(50px);
+}
 
-
-.fa-info-circle, .fa-pencil-alt, .fa-times-circle {
+/* .fa-info-circle, .fa-pencil-alt, .fa-times-circle {
   color: #6C757D;
   background: transparent;
 }
 
 .fa-info-circle:hover, .fa-pencil-alt:hover, .fa-times-circle:hover {
   color: #dc3543;
+} */
+@media screen and (max-width: 576px){
+  .card {
+    max-height: 50%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .card {
+    min-height: 100%;
+    min-width: 80%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .card {
+    min-height: 50%;
+    min-width: 100%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .card {
+    padding: 10rem 0;
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .card {
+    padding: 10rem 0;
+    max-height: 100%;
+    max-width: 100%;
+  }
 }
