@@ -1,3 +1,7 @@
+html, body, main {
+  height: 100%;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -11,26 +15,50 @@
   padding: 100px;
 }
 
-.card {
-  /* color: #ffffff; */
+
+/* input-area:-webkit-autofill {
+    background-color: black
+    background-image: none;
+    color: rgb(0, 0, 0);
+} */
+
+
+.card, .input-area, .card button {
+  color: #ececec;
 }
 
-.input-area {
+.card h2 {
+  margin: 0.5rem 0 3rem 0;
+}
+
+.submit-btn {
+  margin-top: 2rem;
+  background-color: #486685;
+}
+
+.submit-btn:hover {
+  background-color: #f2a365;
+}
+
+input {
   border: none;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ececec;
   outline: none;
   background: transparent;
   border-radius: 0;
   letter-spacing: 0.5px;
-  margin: 1.2rem 0;
+  margin: 0 0;
 }
 
-.input-area:focus {
+input:focus {
   box-shadow: none;
   outline: none;
-  border-color: #ff626f;
+  border-bottom: 2px solid #f2a365;
   background: transparent;
+  transition-duration: 1s;
 }
+
+
 
 .fa-info-circle, .fa-pencil-alt, .fa-times-circle {
   color: #6C757D;

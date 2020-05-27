@@ -21,7 +21,7 @@ db.on('error', () => console.log('mongodb error!'))
 db.once('open', () => console.log('mongodb connected'))
 
 app.get('/', (req, res) => {
-  res.render('index')
+  res.render('index', { urlCheck: true })
 })
 
 app.post('/', (req, res) => {
@@ -46,7 +46,7 @@ app.post('/', (req, res) => {
         let shortURL = shortener()
         resolve(shortURL)
       } else {
-        res.render('invalid', { url })
+        res.render('index', { url, urlCheck })
       }
     })
   }
