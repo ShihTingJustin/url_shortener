@@ -2,10 +2,10 @@
   <div style="outline: auto;" class="card bg-dark h-100 d-flex flex-column justify-content-center align-items-center">
     <h2>URL SHORTENER<i class="fas fa-link fa-lg ml-2"></i></h2>
     <form action="/" method="POST" class="w-100 d-flex flex-column align-items-center">
-      <div class="input-area w-75">
-        <input type="text" name="url" placeholder="Please enter url here" class="input-area w-100">{{ url }}
-        {{#unless urlCheck}}
-        <small style="color: #ff626f;">Sorry, this link is invalid</small>
+      <div style="height: 50px;" class="input-area w-75">
+        <input required type="text" name="url" placeholder="Please enter url here" class="input-area w-100"
+          value="{{#unless urlCheck}}{{ url }}{{/unless}}">
+        {{#unless urlCheck}}<small class="input-small" style="color: #ff626f;">Sorry, this link is invalid.</small>
         {{/unless}}
       </div>
       <button type="submit" class="submit-btn btn btn w-50">Shorten</button>

@@ -33,7 +33,6 @@ app.post('/', (req, res) => {
     return new Promise((resolve, rej) => {
       request({ url: url, method: 'HEAD' }, (err, res) => {
         const result = (!err && res.statusCode === 200) == true ? true : false
-        //console.log(37, result)
         resolve(result)
       })
     })
@@ -72,7 +71,7 @@ app.post('/', (req, res) => {
   // create data
   const createData = function (checkShortUrlRepeat) {
     return new Promise((resolve, rej) => {
-
+      console.log(74, checkShortUrlRepeat)
       URL.create({ origin: url, shorten: checkShortUrlRepeat })
         .then(() => res.render('valid', { checkShortUrlRepeat }))
         .catch(error => console.log(error))
@@ -83,8 +82,7 @@ app.post('/', (req, res) => {
     const value = await urlCheck()
     const value1 = await generateShortURL(value, url)
     const value2 = await checkShortUrlRepeat(value1)
-    const value3 = await generateShortURL(value2)
-    const value4 = await createData(value3)
+    const value3 = await createData(value2)
   }
 
   shortenAsyncAwait()

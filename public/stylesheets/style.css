@@ -47,7 +47,6 @@ input {
   background: transparent;
   border-radius: 0;
   letter-spacing: 0.5px;
-  margin: 0 0;
 }
 
 input:focus {
