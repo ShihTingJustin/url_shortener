@@ -20,24 +20,34 @@ html, body, .container {
 
 .card {
   width: 100%;
+  box-shadow:  0 0px 15px rgb(194, 194, 194);
   /* border: 10px solid #ececec; */
 }
 
-.card:hover {
-  box-shadow:  0 0px 30px rgb(194, 194, 194);
+/* .card:hover {
+  
   transition-duration: 0.5s;
-}
+} */
 
 .logo {
   font-size: 1.5rem;
   font-family: 'Noto Serif TC', serif;
   margin-bottom: 6rem;
-  background-color: transparent ;
-  
+  background-color: transparent ;  
 }
 
 .logo a:hover {
   text-decoration: none;
+}
+
+.logo i {
+  color: #486685; ;  
+}
+
+.logo a:hover i {
+  color: #f2a365;
+  /* box-shadow:  0 0px 30px rgb(194, 194, 194); */
+  transition-duration: 0.5s;  
 }
 
 /* input-area:-webkit-autofill {
@@ -46,20 +56,19 @@ html, body, .container {
     color: rgb(0, 0, 0);
 } */
 
-.card, .input-area, .card button, .logo a, .logo a:hover {
+.card, .input-area, .card button, .logo a, .logo a:hover, .valid-input-area, .valid-input-area:focus {
   color: #ececec;
 }
 
-.submit-btn {
-  margin-top: 2rem;
+.submit-btn, .copy-btn {
   background-color: #486685;
 }
 
-.submit-btn:hover {
+.submit-btn:hover, .copy-btn:hover {
   background-color: #f2a365;
 }
 
-input {
+.input-area {
   border: none;
   border-bottom: 1px solid #ececec;
   outline: none;
@@ -68,7 +77,7 @@ input {
   letter-spacing: 0.5px;
 }
 
-input:focus {
+.input-area:focus {
   box-shadow: none;
   outline: none;
   border-bottom: 2px solid #f2a365;
@@ -76,9 +85,24 @@ input:focus {
   transition-duration: 1s;
 }
 
+.valid-input-area, .copy-btn {
+  border: none;
+  outline: none;
+}
+
+.copy-btn:focus {
+  box-shadow: none;
+}
+
+.valid-input-area, .valid-input-area:focus {
+  background-color: #636060;
+  box-shadow: none;
+}
+
 .url-block {
   background-color: #636060;
   backdrop-filter: blur(50px);
+  border-radius: 0.25rem;
 }
 
 @media screen and (max-width: 576px){
@@ -104,7 +128,6 @@ input:focus {
 
 @media screen and (max-width: 1200px) {
   .card {
-    padding: 10rem 0;
     max-height: 100%;
     max-width: 100%;
   }
@@ -112,7 +135,6 @@ input:focus {
 
 @media screen and (min-width: 1200px) {
   .card {
-    padding: 10rem 0;
     max-height: 100%;
     max-width: 100%;
   }

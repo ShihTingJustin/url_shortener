@@ -4,7 +4,7 @@
         URL SHORTENER<i class="fas fa-link fa-lg ml-2"></i></a>
     </div>
     <form action="/" method="POST" class="w-100 d-flex flex-column align-items-center">
-      <div style="height: 50px;" class="input-area w-75">
+      <div style="height: 50px;" class="w-75">
         <input required type="text" name="url" placeholder="Please enter URL here" class="input-area w-100 text-center"
           value="{{#unless urlCheck}}{{ url }}{{/unless}}">
         {{#unless urlCheck}}<small class="input-small" style="color: #ff626f;">Sorry, this link is invalid.</small>

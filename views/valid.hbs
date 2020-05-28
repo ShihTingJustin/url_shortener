@@ -6,15 +6,17 @@
     <form action="/" method="POST" class="w-100 d-flex flex-column align-items-center">
       <div class="shorten-block w-75">
         <h4 class="mb-1 text-left">Your shortened URL</h4>
-        <div class="url-block input-group mb-3">
-          <input type="text" class="form-control" placeholder="Your shortened URL" aria-describedby="basic-addon2"
-            value="https://frozen-atoll-45486.herokuapp.com/{{ checkedShortURL }}">
+        <div class="input-group mb-3">
+          <input type="text" class="valid-input-area form-control" placeholder="Your shortened URL"
+            aria-describedby="basic-addon2" value="https://frozen-atoll-45486.herokuapp.com/{{ checkedShortURL }}">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Copy<i class="far fa-copy ml-1"></i></button>
+            <button class="copy-btn btn" type="button" data-container="body" data-toggle="popover"
+              data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Copy<i
+                class="far fa-copy ml-1"></i></button>
           </div>
         </div>
       </div>
-      <div class="original-block w-75 mt-3">
+      <div class="original-block w-75 mt-4">
         <div class="mb-1 text-left">Original URL:</div>
         <div class="url-block text-center">
           {{ url }}
@@ -23,3 +25,14 @@
     </form>
   </div>
 </div>
+<script>
+  console.log('frontend')
+  const url = document.querySelector('.valid-input-area')
+  const copyBtn = document.querySelector('.copy-btn')
+
+  copyBtn.addEventListener('click', () => {
+    url.select()
+    document.execCommand('copy')
+  })
+
+</script>
