@@ -20,13 +20,24 @@ html, body, .container {
 
 .card {
   width: 100%;
-  border: 10px solid #ececec;
+  /* border: 10px solid #ececec; */
+}
+
+.card:hover {
+  box-shadow:  0 0px 30px rgb(194, 194, 194);
+  transition-duration: 0.5s;
 }
 
 .logo {
   font-size: 1.5rem;
   font-family: 'Noto Serif TC', serif;
   margin-bottom: 6rem;
+  background-color: transparent ;
+  
+}
+
+.logo a:hover {
+  text-decoration: none;
 }
 
 /* input-area:-webkit-autofill {
@@ -35,8 +46,7 @@ html, body, .container {
     color: rgb(0, 0, 0);
 } */
 
-
-.card, .input-area, .card button {
+.card, .input-area, .card button, .logo a, .logo a:hover {
   color: #ececec;
 }
 
@@ -71,14 +81,6 @@ input:focus {
   backdrop-filter: blur(50px);
 }
 
-/* .fa-info-circle, .fa-pencil-alt, .fa-times-circle {
-  color: #6C757D;
-  background: transparent;
-}
-
-.fa-info-circle:hover, .fa-pencil-alt:hover, .fa-times-circle:hover {
-  color: #dc3543;
-} */
 @media screen and (max-width: 576px){
   .card {
     max-height: 50%;
