@@ -30,10 +30,9 @@ html, body, .container {
 } */
 
 .logo {
-  font-size: 1.5rem;
   font-family: 'Noto Serif TC', serif;
-  margin-bottom: 6rem;
   background-color: transparent ;  
+  margin-bottom: 5rem;
 }
 
 .logo a:hover {
@@ -46,8 +45,8 @@ html, body, .container {
 
 .logo a:hover i {
   color: #f2a365;
-  /* box-shadow:  0 0px 30px rgb(194, 194, 194); */
-  transition-duration: 0.5s;  
+  transition-duration: 0.5s; 
+  /* box-shadow:  0 0px 30px rgb(194, 194, 194); */ 
 }
 
 /* input-area:-webkit-autofill {
@@ -58,6 +57,10 @@ html, body, .container {
 
 .card, .input-area, .card button, .logo a, .logo a:hover, .valid-input-area, .valid-input-area:focus {
   color: #ececec;
+}
+
+.submit-btn {
+  margin-top: 1rem;
 }
 
 .submit-btn, .copy-btn {
@@ -99,43 +102,97 @@ html, body, .container {
   box-shadow: none;
 }
 
-.url-block {
-  background-color: #636060;
-  backdrop-filter: blur(50px);
-  border-radius: 0.25rem;
+.original-block, .original-input {
+  font-size: 0.8rem;
 }
+
+.original-input:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 
 @media screen and (max-width: 576px){
-  .card {
-    max-height: 50%;
-    max-width: 100%;
-  }
-}
-
-@media screen and (max-width: 768px){
-  .card {
-    min-height: 100%;
-    min-width: 80%;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .card {
-    min-height: 50%;
-    min-width: 100%;
-  }
-}
-
-@media screen and (max-width: 1200px) {
+  
   .card {
     max-height: 100%;
     max-width: 100%;
   }
+
+  .logo {
+    margin-top: 3rem;
+  }
+
+  .submit-btn, .original-block {
+    margin-bottom: 3rem;
+  }
+
+  .input-area, .display-shortened-url {
+    font-size: 0.8rem;
+  }
+
+  .original-input {
+    font-size: 0.5rem;
+  }
+
+  .logo, .submit-btn, .copy-btn {
+    font-size: 0.9rem;
+  }
+
 }
 
-@media screen and (min-width: 1200px) {
-  .card {
-    max-height: 100%;
-    max-width: 100%;
+@media screen and (min-width: 577px) and (max-width: 992px) {
+  
+  .logo {
+    margin-top: 3rem;
   }
+
+  .submit-btn, .original-block {
+    margin-bottom: 3rem;
+  }
+
+  .input-area, .display-shortened-url {
+    font-size: 1.1rem;
+  }
+
+  .original-input {
+    font-size: 0.8rem;
+  }
+
+  .logo, .submit-btn, .copy-btn {
+    font-size: 1.4rem;
+  }
+
+}
+
+@media screen and (min-width: 993px) and (max-width: 4000px) {
+
+  .logo {
+    margin-top: 3rem;
+  }
+
+  .submit-btn, .original-block {
+    margin-bottom: 3rem;
+  }
+
+  .shorten-title {
+    font-size: 2rem;
+  }
+
+  .input-area, .display-shortened-url {
+    font-size: 1.5rem;
+  }
+
+  .original-title {
+    font-size: 1.1rem;
+  }
+
+  .original-input {
+    font-size: 1rem;
+  }
+
+  .logo, .submit-btn, .copy-btn {
+    font-size: 1.7rem;
+  }
+
 }

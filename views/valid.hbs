@@ -1,13 +1,13 @@
 <div class="container d-flex flex-column justify-content-center align-items-center">
   <div class="card bg-dark d-flex flex-column justify-content-center align-items-center">
-    <div class="logo"><a href="/" style="background-color: transparent ;">
-        URL SHORTENER<i class="fas fa-link fa-lg ml-2"></i></a>
+    <div class="logo">
+      <a href="/">URL SHORTENER<i class="fas fa-link fa-lg ml-2"></i></a>
     </div>
     <form action="/" method="POST" class="w-100 d-flex flex-column align-items-center">
       <div class="shorten-block w-75">
-        <h4 class="mb-1 text-left">Your shortened URL</h4>
+        <h4 class="shorten-title mb-1 text-left">Your shortened URL</h4>
         <div class="input-group mb-3">
-          <input type="text" class="valid-input-area form-control" placeholder="Your shortened URL"
+          <input type="text" class="display-shortened-url valid-input-area form-control" placeholder="Your shortened URL"
             aria-describedby="basic-addon2" value="https://frozen-atoll-45486.herokuapp.com/{{ checkedShortURL }}">
           <div class="input-group-append">
             <button id="copy-btn" class="copy-btn btn" type="button" data-container="body" data-toggle="popover"
@@ -16,10 +16,13 @@
           </div>
         </div>
       </div>
-      <div class="original-block w-75 mt-4">
-        <div class="mb-1 text-left">Original URL:</div>
-        <div class="url-block text-center">
-          {{ url }}
+      <div class="original-block text-left w-75 mt-4">
+        <div class="original-title mb-1">Original URL:</div>
+        <div class="original-input-wrapper input-group mb-3">
+          <a href="{{ url }}">
+            <input type="text" class="original-input valid-input-area form-control" placeholder="Your shortened URL"
+              aria-describedby="basic-addon2" value="{{ url }}">
+          </a>
         </div>
       </div>
     </form>
