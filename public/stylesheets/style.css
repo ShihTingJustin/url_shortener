@@ -113,7 +113,7 @@ html, body, .container {
 
 
 @media screen and (max-width: 576px){
-  
+
   .card {
     max-height: 100%;
     max-width: 100%;
@@ -141,7 +141,7 @@ html, body, .container {
 
 }
 
-@media screen and (min-width: 577px) and (max-width: 992px) {
+@media screen and (min-width: 577px) and (max-width: 1200px) {
   
   .logo {
     margin-top: 3rem;
@@ -165,7 +165,7 @@ html, body, .container {
 
 }
 
-@media screen and (min-width: 993px) and (max-width: 4000px) {
+@media screen and (min-width: 1201px) and (max-width: 4000px) {
 
   .logo {
     margin-top: 3rem;

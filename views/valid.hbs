@@ -1,14 +1,15 @@
 <div class="container d-flex flex-column justify-content-center align-items-center">
   <div class="card bg-dark d-flex flex-column justify-content-center align-items-center">
-    <div class="logo">
+    <div class="logo w-100 text-center">
       <a href="/">URL SHORTENER<i class="fas fa-link fa-lg ml-2"></i></a>
     </div>
     <form action="/" method="POST" class="w-100 d-flex flex-column align-items-center">
       <div class="shorten-block w-75">
         <h4 class="shorten-title mb-1 text-left">Your shortened URL</h4>
         <div class="input-group mb-3">
-          <input type="text" class="display-shortened-url valid-input-area form-control" placeholder="Your shortened URL"
-            aria-describedby="basic-addon2" value="https://frozen-atoll-45486.herokuapp.com/{{ checkedShortURL }}">
+          <input type="text" class="display-shortened-url valid-input-area form-control"
+            placeholder="Your shortened URL" aria-describedby="basic-addon2"
+            value="https://frozen-atoll-45486.herokuapp.com/{{ checkedShortURL }}">
           <div class="input-group-append">
             <button id="copy-btn" class="copy-btn btn" type="button" data-container="body" data-toggle="popover"
               data-placement="bottom" data-content="Copied!" data-delay="250">Copy<i
