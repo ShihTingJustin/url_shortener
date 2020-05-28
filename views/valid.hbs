@@ -10,8 +10,8 @@
           <input type="text" class="valid-input-area form-control" placeholder="Your shortened URL"
             aria-describedby="basic-addon2" value="https://frozen-atoll-45486.herokuapp.com/{{ checkedShortURL }}">
           <div class="input-group-append">
-            <button class="copy-btn btn" type="button" data-container="body" data-toggle="popover"
-              data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Copy<i
+            <button id="copy-btn" class="copy-btn btn" type="button" data-container="body" data-toggle="popover"
+              data-placement="bottom" data-content="Copied!" data-delay="250">Copy<i
                 class="far fa-copy ml-1"></i></button>
           </div>
         </div>
@@ -29,10 +29,10 @@
   console.log('frontend')
   const url = document.querySelector('.valid-input-area')
   const copyBtn = document.querySelector('.copy-btn')
-
   copyBtn.addEventListener('click', () => {
-    url.select()
+    url.select()  // select input DOM
     document.execCommand('copy')
   })
+
 
 </script>
