@@ -141,8 +141,12 @@ html, body, .container {
 
 }
 
-@media screen and (min-width: 577px) and (max-width: 1200px) {
+@media screen and (min-width: 577px) and (max-width: 992px) {
   
+  .card {
+    max-width: 95%;
+  }
+
   .logo {
     margin-top: 3rem;
   }
@@ -165,7 +169,39 @@ html, body, .container {
 
 }
 
-@media screen and (min-width: 1201px) and (max-width: 4000px) {
+@media screen and (min-width: 993px) and (max-width: 1600px) {
+  
+  .card {
+    max-width: 80%;
+  }
+
+  .logo {
+    margin-top: 3rem;
+  }
+
+  .submit-btn, .original-block {
+    margin-bottom: 3rem;
+  }
+
+  .input-area, .display-shortened-url {
+    font-size: 1.1rem;
+  }
+
+  .original-input {
+    font-size: 0.8rem;
+  }
+
+  .logo, .submit-btn, .copy-btn {
+    font-size: 1.4rem;
+  }
+
+}
+
+@media screen and (min-width: 1601px) and (max-width: 4000px) {
+
+  .card {
+    max-width: 80%;
+  }
 
   .logo {
     margin-top: 3rem;

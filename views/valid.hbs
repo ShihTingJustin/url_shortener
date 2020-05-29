@@ -11,7 +11,7 @@
             placeholder="Your shortened URL" aria-describedby="basic-addon2"
             value="https://frozen-atoll-45486.herokuapp.com/{{ checkedShortURL }}">
           <div class="input-group-append">
-            <button id="copy-btn" class="copy-btn btn" type="button" data-container="body" data-toggle="popover"
+            <button class="copy-btn btn" type="button" data-container="body" data-toggle="popover"
               data-placement="bottom" data-content="Copied!" data-delay="250">Copy<i
                 class="far fa-copy ml-1"></i></button>
           </div>
@@ -19,9 +19,9 @@
       </div>
       <div class="original-block text-left w-75 mt-4">
         <div class="original-title mb-1">Original URL:</div>
-        <div class="original-input-wrapper input-group mb-3">
-          <a href="{{ url }}">
-            <input type="text" class="original-input valid-input-area form-control" placeholder="Your shortened URL"
+        <div class="original-input-wrapper input-group mb-3 w-100">
+          <a href="{{ url }}" class="w-100">
+            <input type="text" class="original-input valid-input-area form-control " placeholder="Your shortened URL"
               aria-describedby="basic-addon2" value="{{ url }}">
           </a>
         </div>
@@ -37,6 +37,4 @@
     url.select()  // select input DOM
     document.execCommand('copy')
   })
-
-
 </script>
