@@ -4,14 +4,17 @@ const request = require('request')
 const URL = require('../../models/urls')
 const shortener = require('../../shortener')
 
+// main page
 router.get('/', (req, res) => {
   res.render('index', { urlCheck: true })
 })
 
+// URL invalid page
 router.get('/error', (req, res) => {
   res.render('invalid')
 })
 
+// URL shortener
 router.post('/', (req, res) => {
   const { url } = req.body
   console.log(url)
@@ -26,7 +29,7 @@ router.post('/', (req, res) => {
     })
   }
 
-  // create and render page by result
+  // true: generate a shortened URL; false: render page by result
   const generateShortURL = function (urlCheck, url) {
     return new Promise((resolve, rej) => {
       if (urlCheck) {
@@ -38,12 +41,14 @@ router.post('/', (req, res) => {
     })
   }
 
+  // check the shortened URL not repeat
   const checkShortUrlRepeat = function (shortURL) {
     return new Promise((res, rej) => {
-      URL.find({ shorten: shortURL })
+      URL.findOne({ shorten: shortURL })
+        .lean()
         .then(url => {
           let newShortURL = shortURL
-          if (url.length === 0) {
+          if (!url) {
             console.log(`'${newShortURL}' is not repeat`)
             res(newShortURL)
           } else if (url.length > 0) {
@@ -56,10 +61,9 @@ router.post('/', (req, res) => {
     })
   }
 
-  // create data
+  // create data and render page
   const createData = function (checkedShortURL) {
     return new Promise((resolve, rej) => {
-      console.log(74, checkedShortURL)
       URL.create({ origin: url, shorten: checkedShortURL })
         .then(() => res.render('valid', { url, checkedShortURL }))
         .catch(error => console.log(error))
@@ -75,14 +79,14 @@ router.post('/', (req, res) => {
 
   shortenAsyncAwait()
 })
+
 // redirect to origin url
 router.get('/:shorten', (req, res) => {
   const { shorten } = req.params
-  URL.find({ shorten: shorten })
+  URL.findOne({ shorten: shorten })
     .lean()
     .then(url => {
-      console.log(58, shorten, url[0].origin)
-      res.redirect(`${url[0].origin}`)
+      res.redirect(`${url.origin}`)
     })
     .catch(error => console.log(error))
 })
