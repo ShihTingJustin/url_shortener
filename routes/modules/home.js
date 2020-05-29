@@ -8,6 +8,10 @@ router.get('/', (req, res) => {
   res.render('index', { urlCheck: true })
 })
 
+router.get('/error', (req, res) => {
+  res.render('invalid')
+})
+
 router.post('/', (req, res) => {
   const { url } = req.body
   console.log(url)

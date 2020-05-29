@@ -7,7 +7,8 @@
       <div style="height: 50px;" class="w-75">
         <input required type="text" name="url" placeholder="Please enter URL here" class="input-area w-100 text-center"
           value="{{#unless urlCheck}}{{ url }}{{/unless}}">
-        {{#unless urlCheck}}<small class="input-small" style="color: #ff626f;">Sorry, this link is invalid.</small>
+        {{#unless urlCheck}}<small class="input-small" style="color: #ff626f;">Sorry, this link is invalid,<a
+            href="/error" style="color: #ff626f;"> click here to possible errors.</a></small>
         {{/unless}}
       </div>
       <button type="submit" class="submit-btn btn w-50">Shorten</button>

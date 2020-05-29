@@ -60,7 +60,7 @@ html, body, .container {
 }
 
 .submit-btn {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .submit-btn, .copy-btn {
@@ -127,7 +127,7 @@ html, body, .container {
     margin-bottom: 3rem;
   }
 
-  .input-area, .display-shortened-url {
+  .input-area, .display-shortened-url, .invalid-block {
     font-size: 0.8rem;
   }
 
@@ -135,7 +135,7 @@ html, body, .container {
     font-size: 0.5rem;
   }
 
-  .logo, .submit-btn, .copy-btn {
+  .logo, .submit-btn, .copy-btn, .invalid-title {
     font-size: 0.9rem;
   }
 
@@ -159,12 +159,20 @@ html, body, .container {
     font-size: 1.1rem;
   }
 
+  .invalid-title {
+    font-size: 1.2rem;
+  }
+
   .original-input {
     font-size: 0.8rem;
   }
 
-  .logo, .submit-btn, .copy-btn {
-    font-size: 1.4rem;
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .submit-btn, .copy-btn {
+    font-size: 1rem;
   }
 
 }
@@ -191,8 +199,16 @@ html, body, .container {
     font-size: 0.8rem;
   }
 
-  .logo, .submit-btn, .copy-btn {
+  .invalid-title {
+    font-size: 1.3rem;
+  }
+
+  .logo {
     font-size: 1.4rem;
+  }
+
+  .submit-btn, .copy-btn {
+    font-size: 1.1rem;
   }
 
 }
@@ -211,7 +227,7 @@ html, body, .container {
     margin-bottom: 3rem;
   }
 
-  .shorten-title {
+  .shorten-title, .invalid-title {
     font-size: 2rem;
   }
 
@@ -225,6 +241,10 @@ html, body, .container {
 
   .original-input {
     font-size: 1rem;
+  }
+
+  .invalid-title {
+    font-size: 1.4rem;
   }
 
   .logo, .submit-btn, .copy-btn {
