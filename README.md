@@ -2,8 +2,9 @@
 A simple URL shortener website built with Node.js and Express.
 
 ## Features
-1. Shorten URL and copy in 1 second
-2. Notice user if the URL is invalid
+1. Shorten your URL
+2. Copy shortened URL by one-click
+3.. Notice user if the URL is invalid
 
 ![](https://i.imgur.com/IZze9BT.png)
 
