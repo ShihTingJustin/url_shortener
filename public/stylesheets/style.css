@@ -59,6 +59,16 @@ html, body, .container {
   color: #ececec;
 }
 
+.manager-icon {
+  color: #486685;
+  cursor: pointer;
+}
+
+.manager-icon:hover {
+  color: #f2a365;
+  transition-duration: 0.5s; 
+}
+
 .submit-btn {
   margin-top: 1.5rem;
 }

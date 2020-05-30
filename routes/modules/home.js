@@ -80,15 +80,4 @@ router.post('/', (req, res) => {
   shortenAsyncAwait()
 })
 
-// redirect to origin url
-router.get('/:shorten', (req, res) => {
-  const { shorten } = req.params
-  URL.findOne({ shorten: shorten })
-    .lean()
-    .then(url => {
-      res.redirect(`${url.origin}`)
-    })
-    .catch(error => console.log(error))
-})
-
 module.exports = router
