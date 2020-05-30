@@ -41,20 +41,20 @@ router.post('/', (req, res) => {
     })
   }
 
-  // check the shortened URL not repeat
-  const checkShortUrlRepeat = function (shortURL) {
+  // check the shortened URL not duplicated
+  const checkShortUrlDuplicated = function (shortURL) {
     return new Promise((res, rej) => {
       URL.findOne({ shorten: shortURL })
         .lean()
         .then(url => {
           let newShortURL = shortURL
           if (!url) {
-            console.log(`'${newShortURL}' is not repeat`)
+            console.log(`'${newShortURL}' is not duplicated`)
             res(newShortURL)
-          } else if (url.length > 0) {
-            console.log('repeat! creating new ...')
+          } else {
+            console.log('duplicated! creating new ...')
             newShortURL = shortener()
-            checkShortUrlRepeat(newShortURL)
+            checkShortUrlDuplicated(newShortURL)
           }
         })
         .catch(error => console.log(error))
@@ -73,7 +73,7 @@ router.post('/', (req, res) => {
   async function shortenAsyncAwait() {
     const value = await urlCheck()
     const value1 = await generateShortURL(value, url)
-    const value2 = await checkShortUrlRepeat(value1)
+    const value2 = await checkShortUrlDuplicated(value1)
     const value3 = await createData(value2)
   }
 

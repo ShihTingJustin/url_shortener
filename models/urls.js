@@ -7,7 +7,12 @@ const urlSchema = mongoose.Schema({
   },
   shorten: {
     type: String,
-    require: true
+    require: true,
+    unique: true
+  },
+  click: {
+    type: Number,
+    default: '0'
   }
 })
 
