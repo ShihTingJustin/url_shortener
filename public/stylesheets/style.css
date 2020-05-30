@@ -121,6 +121,17 @@ html, body, .container {
   text-decoration: underline;
 }
 
+/* .m-card {
+  position: absolute;
+} */
+
+.badge-pill {
+  align-self: flex-end;
+  position: relative;
+  line-height: 1.5rem;
+  top: -5%;
+  left: 7%;
+}
 
 @media screen and (max-width: 576px){
 
