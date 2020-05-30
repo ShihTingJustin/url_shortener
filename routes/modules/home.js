@@ -83,11 +83,9 @@ router.post('/', (req, res) => {
 // redirect to origin url
 router.get('/:shorten', (req, res) => {
   const { shorten } = req.params
-  console.log(86, shorten)
   URL.findOne({ shorten: shorten })
     .lean()
     .then(url => {
-      console.log(90, url)
       res.redirect(`${url.origin}`)
     })
     .catch(error => console.log(error))
