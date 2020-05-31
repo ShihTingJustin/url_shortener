@@ -1,11 +1,19 @@
 // copy function
 console.log('frontend')
-const url = document.querySelector('.valid-input-area')
-const copyBtn = document.querySelector('.copy-btn')
-copyBtn.addEventListener('click', () => {
-  url.select()  // select input DOM
-  document.execCommand('copy')
+const urls = document.querySelectorAll('.display-shortened-url')
+const copyBtn = document.querySelectorAll('.copy-btn')
+copyBtn.forEach(btn => {
+  btn.addEventListener('click', e => {
+    urls.forEach(url => {
+      if (url.dataset.id === e.target.dataset.id) {
+        url.select()  // select input DOM
+        document.execCommand('copy')
+        console.log('copied')
+      }
+    })
+  })
 })
+
 
 // check again before delete
 function deleteCheckAgain() {
