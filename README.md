@@ -44,6 +44,7 @@ http://localhost:3000
 * mongoDB Community Server: 4.2.6
 * mongoose: 5.9.16
 * request: 2.88.2
+* link-preview-generator: 0.0.4
 
 ## Author
 Justin Huang 黃士庭 
