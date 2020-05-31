@@ -55,7 +55,7 @@ html, body, .container {
     color: rgb(0, 0, 0);
 } */
 
-.card, .input-area, .card button, .logo a, .logo a:hover, .valid-input-area, .valid-input-area:focus {
+.card, .input-area, .card button, .logo a, .logo a:hover, .valid-input-area, .valid-input-area:focus, .m-description {
   color: #ececec;
 }
 
