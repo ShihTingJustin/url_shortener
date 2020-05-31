@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container d-flex flex-column align-items-center">
   <div class="logo w-100 text-center">
     <a href="/">URL SHORTENER<i class="fas fa-link fa-lg ml-2"></i></a>
   </div>
-  <div class="card-block d-flex flex-wrap justify-content-center">
+  <div class="card-block w-100 row justify-content-around">
     {{#each urls}}
-    <div class="card m-card bg-dark mx-3 my-4" style="width: 20rem;">
+    <div class="card m-card bg-dark col-sm-6 col-md-4 col-lg-3 m-3" style="width: 20rem;">
       <span class="badge badge-pill badge-danger w-25">{{ this.click }}</span>
       <div class="shorten-block ">
-        <h5 class="shorten-title mb-1 text-left">Shortened URL</h5>
+        <div class="shorten-title mb-1 text-left">Shortened URL:</div>
         <div class="input-group mb-3">
           <input type="text" class="display-shortened-url valid-input-area form-control"
             placeholder="Your shortened URL" aria-describedby="basic-addon2"
@@ -28,12 +28,16 @@
           </a>
         </div>
       </div>
+      <div style="align-self: center;">
+        <form action="/manager/{{ this._id }}" method="POST" onsubmit="return deleteCheckAgain()">
+          <button type="submit" style="border: none; background: transparent;"
+            class="delete-btn fas fa-times-circle mb-2">
+          </button>
+        </form>
+      </div>
     </div>
     {{/each}}
   </div>
-  <div class="d-flex justify-content-center">
-    <a href="/" class="submit-btn btn w-50" style="text-decoration:none; color:#ececec;">Create other
-      shortened URL</a>
-  </div>
-
+  <a href="/" class="submit-btn btn w-50" style="text-decoration:none; color:#ececec;">Create other
+    shortened URL</a>
 </div>

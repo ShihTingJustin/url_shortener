@@ -121,16 +121,25 @@ html, body, .container {
   text-decoration: underline;
 }
 
-/* .m-card {
-  position: absolute;
-} */
+.delete-btn {
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  color: #DC3545;
+  transition-duration: 0.5s;
+}
+
+.m-card .shorten-block, .m-card input, .m-card .copy-btn{
+  font-size: 0.8rem;
+}
 
 .badge-pill {
   align-self: flex-end;
   position: relative;
   line-height: 1.5rem;
   top: -5%;
-  left: 7%;
+  left: 11%;
 }
 
 @media screen and (max-width: 576px){

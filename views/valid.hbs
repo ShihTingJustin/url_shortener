@@ -1,5 +1,6 @@
 <div class="container d-flex flex-column justify-content-center align-items-center">
   <div class="card bg-dark d-flex flex-column justify-content-center align-items-center">
+    <a href="/manager" class="manager-icon fas fa-table fa-lg mt-3 mr-3" style="align-self: flex-end;"></a>
     <div class="logo w-100 text-center">
       <a href="/">URL SHORTENER<i class="fas fa-link fa-lg ml-2"></i></a>
     </div>
@@ -31,12 +32,3 @@
       URL</a>
   </div>
 </div>
-<script>
-  console.log('frontend')
-  const url = document.querySelector('.valid-input-area')
-  const copyBtn = document.querySelector('.copy-btn')
-  copyBtn.addEventListener('click', () => {
-    url.select()  // select input DOM
-    document.execCommand('copy')
-  })
-</script>
