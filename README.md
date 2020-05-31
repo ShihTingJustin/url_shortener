@@ -5,9 +5,9 @@ A simple URL shortener website built with Node.js and Express.
 1. Shorten your URL
 2. Copy shortened URL by one-click
 3. Notice user if the URL is invalid
-4. Track the total of clicks and manage shortened urls in manager page
+4. Manage shortened URLs and track the total of clicks in manager page
 
-![](https://i.imgur.com/IZze9BT.png)
+![](https://i.imgur.com/L8ZNvdP.png)
 ![](https://i.imgur.com/ypdSVKX.png)
 
 ## Getting Started
