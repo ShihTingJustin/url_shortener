@@ -3,7 +3,7 @@ const URL = require('../urls')
 const db = require('../../config/mongoose')
 
 db.once('open', () => {
-  console.log('mongodb connected!')
+  console.log('mongodb connected! run seeder...')
   URL.create(
     {
       origin: 'https://www.mercedes-benz.com.tw/passengercars.html?group=all&subgroup=see-all&view=BODYTYPE',
@@ -33,4 +33,5 @@ db.once('open', () => {
       domain: 'mclaren.com'
     }
   )
+  console.log('done!')
 })
