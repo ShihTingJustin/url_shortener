@@ -19,6 +19,10 @@ Install by [npm](https://www.npmjs.com/)
 ```
 $ npm install
 ```
+Use seed data 
+```
+npm run seed
+```
 Execute 
 ```
 $ npm run dev 
