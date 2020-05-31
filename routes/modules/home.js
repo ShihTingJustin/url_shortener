@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const request = require('request')
 const URL = require('../../models/urls')
+const linkPreviewGenerator = require("link-preview-generator");
 const shortener = require('../../shortener')
 
 // main page
@@ -65,7 +66,34 @@ router.post('/', (req, res) => {
   const createData = function (checkedShortURL) {
     return new Promise((resolve, rej) => {
       URL.create({ origin: url, shorten: checkedShortURL })
-        .then(() => res.render('valid', { url, checkedShortURL }))
+        .then(() => {
+          res.render('valid', { url, checkedShortURL })
+          resolve(checkedShortURL)
+        })
+        .catch(error => console.log(error))
+    })
+  }
+
+  // server save preview data
+  const saveThumbnail = function (checkedShortURL, previewData) {
+    return new Promise((resolve, rej) => {
+      // const filter = { shorten: checkedShortURL }
+      // const update = { img: previewData.img }
+      // URL.findOneAndUpdate(filter, update, { new: true })
+
+
+      URL.findOne({ shorten: checkedShortURL })
+        .then(url => {
+          if (previewData) {
+            url.img = previewData.img
+            url.title = previewData.title
+            url.description = previewData.description
+            url.domain = previewData.domain
+            url.save()
+          } else {
+            console.log('can not get preview data...')
+          }
+        })
         .catch(error => console.log(error))
     })
   }
@@ -75,8 +103,9 @@ router.post('/', (req, res) => {
     const value1 = await generateShortURL(value, url)
     const value2 = await checkShortUrlDuplicated(value1)
     const value3 = await createData(value2)
+    const previewData = await linkPreviewGenerator(url)
+    const value4 = await saveThumbnail(value3, previewData)
   }
-
   shortenAsyncAwait()
 })
 

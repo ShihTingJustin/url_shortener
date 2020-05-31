@@ -7,11 +7,19 @@
     URL.</div>
   <div class="card-block w-100 row justify-content-around">
     {{#each urls}}
-    <div class="card m-card bg-dark col-sm-6 col-md-4 col-lg-3 m-3" style="width: 20rem;">
+    <div class="card m-card bg-dark col-sm-6 col-md-4 col-lg-3 m-3 justify-content-center" style="width: 20rem;">
       <span class="badge badge-pill badge-danger w-25">{{ this.click }}</span>
-      <div class="shorten-block ">
+      <div class="preview mb-3" style="margin: -1rem; position: relative; top: -3%;">
+        <img src="{{ this.img }}" alt="" class="bg-light rounded-top  w-100" style="height: 10rem;">
+        <div class="preview-info p-2" style="background-color: #486685; outline: none; margin: none; height: 8rem">
+          <small class="preview-domain">{{ this.domain }}</small>
+          <p class="preview-title font-weight-bold" style="font-size: 1rem;">{{ this.title }}</p>
+          <p class="preview-des">{{ this.description }}</p>
+        </div>
+      </div>
+      <div class="shorten-block">
         <div class="shorten-title mb-1 text-left">Shortened URL:</div>
-        <div class="input-group mb-3">
+        <div class="input-group">
           <input type="text" class="display-shortened-url valid-input-area form-control"
             placeholder="Your shortened URL" aria-describedby="basic-addon2" data-id="{{ this._id }}"
             value="https://frozen-atoll-45486.herokuapp.com/s/{{ this.shorten }}">
@@ -39,6 +47,8 @@
         </form>
       </div>
     </div>
+    {{else}}
+    <p class="empty">No content</p>
     {{/each}}
   </div>
   <a href="/" class="submit-btn btn w-50" style="text-decoration:none; color:#ececec;">Create other

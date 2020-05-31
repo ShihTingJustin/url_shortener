@@ -3,6 +3,7 @@ const router = express.Router()
 const request = require('request')
 const URL = require('../../models/urls')
 
+
 router.get('/', (req, res) => {
   return URL.find()
     .lean()
@@ -11,6 +12,7 @@ router.get('/', (req, res) => {
     })
     .catch(error => console.log(error))
 })
+
 
 router.post('/:id', (req, res) => {
   const { id } = req.params
