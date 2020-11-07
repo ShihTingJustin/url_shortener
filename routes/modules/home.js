@@ -1,9 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const request = require('request')
 const URL = require('../../models/urls')
-const linkPreviewGenerator = require("link-preview-generator");
-const shortener = require('../../shortener')
+const helpers = require('../../heplers')
 
 // main page
 router.get('/', (req, res) => {
@@ -15,98 +13,36 @@ router.get('/error', (req, res) => {
   res.render('invalid')
 })
 
-// URL shortener
-router.post('/', (req, res) => {
-  const { url } = req.body
-  console.log(url)
-
-  // check url available
-  const urlCheck = function () {
-    return new Promise((resolve, rej) => {
-      request({ url: url, method: 'HEAD' }, (err, res) => {
-        const result = (!err && res.statusCode === 200) == true ? true : false
-        resolve(result)
-      })
-    })
-  }
-
-  // true: generate a shortened URL; false: render page by result
-  const generateShortURL = function (urlCheck, url) {
-    return new Promise((resolve, rej) => {
-      if (urlCheck) {
-        let shortURL = shortener()
-        resolve(shortURL)
-      } else {
-        res.render('index', { url, urlCheck })
-      }
-    })
-  }
-
-  // check the shortened URL not duplicated
-  const checkShortUrlDuplicated = function (shortURL) {
-    return new Promise((res, rej) => {
-      URL.findOne({ shorten: shortURL })
-        .lean()
-        .then(url => {
-          let newShortURL = shortURL
-          if (!url) {
-            console.log(`'${newShortURL}' is not duplicated`)
-            res(newShortURL)
-          } else {
-            console.log('duplicated! creating new ...')
-            newShortURL = shortener()
-            checkShortUrlDuplicated(newShortURL)
-          }
-        })
-        .catch(error => console.log(error))
-    })
-  }
-
-  // create data and render page
-  const createData = function (checkedShortURL) {
-    return new Promise((resolve, rej) => {
+router.post('/', async (req, res) => {
+  try {
+    const { url } = req.body
+    const check = await helpers.urlCheck(url)
+    if (check) {
+      let shortURL = await helpers.shortener()
+      const checkedShortURL = await helpers.checkShortUrlDuplicated(shortURL)
       URL.create({ origin: url, shorten: checkedShortURL })
+        .then(() => { return res.render('valid', { url, checkedShortURL }) })
         .then(() => {
-          res.render('valid', { url, checkedShortURL })
-          resolve(checkedShortURL)
+          const metaData = helpers.getMetaData(url)
+          return metaData
         })
-        .catch(error => console.log(error))
-    })
-  }
-
-  // server save preview data
-  const saveThumbnail = function (checkedShortURL, previewData) {
-    return new Promise((resolve, rej) => {
-      // const filter = { shorten: checkedShortURL }
-      // const update = { img: previewData.img }
-      // URL.findOneAndUpdate(filter, update, { new: true })
-
-
-      URL.findOne({ shorten: checkedShortURL })
-        .then(url => {
-          if (previewData) {
-            url.img = previewData.img
-            url.title = previewData.title
-            url.description = previewData.description
-            url.domain = previewData.domain
-            url.save()
-          } else {
-            console.log('can not get preview data...')
+        .then(metaData => {
+          if (metaData) {
+            return URL.findOne({ shorten: checkedShortURL })
+              .then(url => {
+                url.img = metaData.image
+                url.title = metaData.title
+                url.description = metaData.description
+                url.save()
+              })
           }
-        })
-        .catch(error => console.log(error))
-    })
+        }).catch(error => console.log(error))
+    } else {
+      return res.render('index', { url, urlCheck: check })
+    }
+  } catch (err) {
+    console.log(err)
   }
-
-  async function shortenAsyncAwait() {
-    const value = await urlCheck()
-    const value1 = await generateShortURL(value, url)
-    const value2 = await checkShortUrlDuplicated(value1)
-    const value3 = await createData(value2)
-    const previewData = await linkPreviewGenerator(url)
-    const value4 = await saveThumbnail(value3, previewData)
-  }
-  shortenAsyncAwait()
 })
 
 module.exports = router
