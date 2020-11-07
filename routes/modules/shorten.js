@@ -3,39 +3,25 @@ const router = express.Router()
 const URL = require('../../models/urls')
 
 // redirect to origin url
-router.get('/:shorten', (req, res) => {
-  const { shorten } = req.params
-  // redirect first
-  const redirect = function () {
-    return new Promise((resolve, rej) => {
-      URL.findOne({ shorten: shorten })
-        .lean()
-        .then(url => {
-          resolve(url._id)
-          res.redirect(`${url.origin}`)
-        })
-        .catch(error => console.log(error))
-    })
-  }
+router.get('/:shorten', async (req, res) => {
+  try {
+    const { shorten } = req.params
+    // redirect first
+    const id = await URL.findOne({ shorten: shorten }).lean()
+      .then(url => {
+        res.redirect(`${url.origin}`)
+        return url._id
+      }).catch(error => console.log(error))
 
-  // update shortened URL click count
-  const updateClickCount = function (id) {
-    return new Promise((res, rej) => {      
-      URL.findById(id)
-        .then(url => {
-          url.click += 1
-          url.save()
-        })
-        .catch(error => console.log(error))
-    })
+    // update shortened URL click count
+    URL.findById(id)
+      .then(url => {
+        url.click += 1
+        url.save()
+      }).catch(error => console.log(error))
+  } catch (err) {
+    console.log(err)
   }
-
-  async function updateClickAsyncAwait() {
-    const value = await redirect()
-    const value1 = await updateClickCount(value)
-  }
-
-  updateClickAsyncAwait()
 })
 
 module.exports = router
