@@ -1,5 +1,5 @@
 const URL = require('./models/urls')
-const request = require('request')
+const axios = require('axios')
 const got = require('got')
 const metascraper = require('metascraper')([
   require('metascraper-image')(),
@@ -48,7 +48,14 @@ module.exports = {
   },
 
   urlCheck: (url) => {
-    return request({ url, method: 'HEAD' }, (err, res) => (!err && res.statusCode === 200) == true ? true : false)
+    return (async () => {
+      try {
+        const res = await axios.get(url)
+        return (res.status === 200) ? true : false
+      } catch (err) {
+        console.log(err)
+      }
+    })()
   },
 
   checkShortUrlDuplicated: (shortURL) => {
